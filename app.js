@@ -19,13 +19,13 @@ async function main() {
 }
 
 app.get("/testListing", async (req, res) => {
-  let sampleListing = new Listing({
+  const sampleListing = new Listing({
     title: "My New Villa",
     description: "By the beach",
+    image: "",
     price: 1200,
     location: "Calangute, Goa",
     country: "India",
-    image: "",
   });
 
   try {
