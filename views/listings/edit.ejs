@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("/layouts/boilerplate") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WonderLodge</title>
-</head>
-
-<body>
-    <h3>Create new listing</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
-        <input name="listing[title]" value="<%= listing.title  %>" type="text"><br>
-        <textarea name="listing[description]"><%= listing.description %></textarea><br>
-        <input name="listing[price]" value="<%= listing.price  %>" type="number"><br>
-        <input name="listing[location]" value="<%= listing.location  %>" type="text"><br>
-        <input name="listing[country]" value="<%= listing.country  %>" type="text"><br>
-        <button>Edit</button>
-    </form>
-</body>
-
-</html>
+    <body>
+        <h3>Create new listing</h3>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+            <input name="listing[title]" value="<%= listing.title  %>" type="text"><br>
+            <textarea name="listing[description]"><%= listing.description %></textarea><br>
+            <input name="listing[price]" value="<%= listing.price  %>" type="number"><br>
+            <input name="listing[location]" value="<%= listing.location  %>" type="text"><br>
+            <input name="listing[country]" value="<%= listing.country  %>" type="text"><br>
+            <button>Edit</button>
+        </form>
+    </body>

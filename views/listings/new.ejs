@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("/layouts/boilerplate") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WonderLodge</title>
-</head>
-
-<body>
-    <h3>Create new listing</h3>
-    <form action="/listings" method="post">
-        <input name="listing[title]" placeholder="Enter title" type="text"><br>
-        <textarea name="listing[description]" placeholder="Enter description"></textarea><br>
-        <input name="listing[price]" placeholder="Enter price" type="number"><br>
-        <input name="listing[location]" placeholder="Enter location" type="text"><br>
-        <input name="listing[country]" placeholder="Enter country" type="text"><br>
-        <button>Add</button>
-    </form>
-</body>
-
-</html>
+    <body>
+        <h3>Create new listing</h3>
+        <form action="/listings" method="post">
+            <input name="listing[title]" placeholder="Enter title" type="text"><br>
+            <textarea name="listing[description]" placeholder="Enter description"></textarea><br>
+            <input name="listing[price]" placeholder="Enter price" type="number"><br>
+            <input name="listing[location]" placeholder="Enter location" type="text"><br>
+            <input name="listing[country]" placeholder="Enter country" type="text"><br>
+            <button>Add</button>
+        </form>
+    </body>
