@@ -48,10 +48,14 @@ app.get("/listings/:id", async (req, res) => {
 });
 
 //create
-app.post("/listings", async (req, res) => {
-  const newListing = new Listing(req.body.listing);
-  await newListing.save();
-  res.redirect("/listings");
+app.post("/listings", async (req, res, next) => {
+  try {
+    const newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+  } catch (err) {
+    next(err);
+  }
 });
 
 //edit
@@ -74,6 +78,11 @@ app.delete("/listings/:id", async (req, res) => {
   let deletedListing = await Listing.findByIdAndDelete(id);
   console.log(deletedListing);
   res.redirect("/listings");
+});
+
+//error handling middlewares
+app.use((err, req, res, next) => {
+  res.send("something went wrong");
 });
 
 //server listening
