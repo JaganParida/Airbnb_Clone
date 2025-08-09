@@ -6,7 +6,7 @@ Welcome to **WanderLodge**, a full-stack web application inspired by **Airbnb**.
 
 - **User Authentication**: Secure login and registration system.
 - **Lodging Management**: Users can **create, edit, and delete** their listings.
-- **Reviews & Ratings**: Users can **post, edit, and delete reviews** for lodgings.
+- **Reviews & Ratings**: Users can **post, edit, and delete reviews** for lodgings with your account.
 - **Image Uploads**: Integrated with **Cloudinary** for storing and managing images.
 - **Interactive Maps**: Utilizes **Mapbox** for displaying locations dynamically.
 - **Responsive Design**: Built with **Bootstrap** for a user-friendly experience across all devices.
