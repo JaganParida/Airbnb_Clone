@@ -57,9 +57,6 @@ router.get(
   wrapAsync(async (req, res, next) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
-    if (!listing) {
-      return next(new ExpressError(404, "Listing not found"));
-    }
     res.render("listings/edit.ejs", { listing });
   })
 );
