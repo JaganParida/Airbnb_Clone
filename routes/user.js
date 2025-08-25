@@ -23,4 +23,21 @@ router.post(
     }
   })
 );
+
+router.get("/login", (req, res) => {
+  res.render("user/login.ejs");
+});
+
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    failureRedirect: "/login",
+    failureFlash: true,
+  }),
+  async (req, res) => {
+    res.send("success", "Welcome to Wanderlust! You are logged in!");
+    res, redirect("/listings");
+  }
+);
+
 module.exports = router;
