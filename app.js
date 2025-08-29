@@ -1,10 +1,16 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -38,9 +44,23 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-//session
+// mongo store setup
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600,
+});
+
+store.on("error", () => {
+  console.log("ERROR in MONGO SESSION STORE", err);
+});
+
+//session options
 const sessionOptions = {
-  secret: "mysupersecretcode",
+  store,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -49,6 +69,7 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
+
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -60,11 +81,18 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//flash middleware
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.currUser = req.user;
+  res.locals.currentUser = req.user;
   next();
+});
+
+//use the simple path
+// Redirect root "/" to "/listings"
+app.get("/", (req, res) => {
+  res.redirect("/listings");
 });
 
 // Routes
@@ -72,9 +100,20 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
+// 404 Error Handler (Keep this at the end)
+app.all("*", (req, res, next) => {
+  next(
+    new ExpressError(
+      404,
+      "Page Not Found! To view Click on Explore WanderLodge"
+    )
+  );
+});
+
 //error handling middlewares
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something went wrong!" } = err;
+  let { statusCode = 500, message = "something went wrong!" } = err;
+  // res.status(statusCode).send(message);
   res.status(statusCode).render("error.ejs", { message });
 });
 
