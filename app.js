@@ -16,12 +16,14 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-//routes
+//routes of the listing
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 //database connection
+// const dbUrl = process.env.ATLASDB_URL;
+
 const dbUrl = "mongodb://127.0.0.1:27017/WanderLodge";
 
 main()
@@ -103,10 +105,7 @@ app.use("/", userRouter);
 // 404 Error Handler (Keep this at the end)
 app.all("*", (req, res, next) => {
   next(
-    new ExpressError(
-      404,
-      "Page Not Found! To view Click on Explore WanderLodge"
-    )
+    new ExpressError(404, "Page Not Found! To view Click on Explore Wanderlust")
   );
 });
 
