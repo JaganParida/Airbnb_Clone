@@ -103,7 +103,7 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 // 404 Error Handler (Keep this at the end)
-app.all("*", (req, res, next) => {
+app.use((req, res, next) => {
   next(
     new ExpressError(404, "Page Not Found! To view Click on Explore Wanderlust")
   );
