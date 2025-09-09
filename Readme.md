@@ -36,7 +36,7 @@ Welcome to **WanderLodge**, a full-stack web application inspired by **Airbnb**.
    ```
 5. Open your browser and visit:
    ```sh
-   http://localhost:3000
+   http://localhost:8080/listings
    ```
 
 ##
