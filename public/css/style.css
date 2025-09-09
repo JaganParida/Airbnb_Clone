@@ -10,9 +10,13 @@ body {
 }
 
 /*navbar*/
+
 .navbar {
   /* height: 5rem; */
   background-color: white;
+}
+.navbar-brand img {
+  height: 2rem;
 }
 .navbar-nav {
   display: inline-flex;
