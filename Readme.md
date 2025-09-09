@@ -28,7 +28,8 @@ Welcome to **WanderLodge**, a full-stack web application inspired by **Airbnb**.
    CLOUDINARY_API_KEY=your_api_key
    CLOUDINARY_API_SECRET=your_api_secret
    MAPBOX_TOKEN=your_mapbox_token
-   MONGO_URI=your_mongodb_url
+   MONGO_URL=your_mongodb_url
+   SECRET=your_secret_code_for_session
    ```
 4. Start the server:
    ```sh
