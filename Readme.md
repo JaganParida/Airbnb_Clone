@@ -24,11 +24,11 @@ Welcome to **WanderLodge**, a full-stack web application inspired by **Airbnb**.
    ```
 3. Set up environment variables in a `.env` file:
    ```env
-   CLOUDINARY_CLOUD_NAME=your_cloudinary_name
-   CLOUDINARY_API_KEY=your_api_key
-   CLOUDINARY_API_SECRET=your_api_secret
-   MAPBOX_TOKEN=your_mapbox_token
-   MONGO_URL=your_mongodb_url
+   CLOUD_NAME=your_cloudinary_name
+   CLOUD_API_KEY=your_cloudinary_api_key
+   CLOUD_API_SECRET=your_api_secret
+   MAP_TOKEN=your_mapbox_token
+   ATLASDB_URL=your_mongodbAtlas_url
    SECRET=your_secret_code_for_session
    ```
 4. Start the server:
