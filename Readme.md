@@ -15,8 +15,8 @@ Welcome to **WanderLodge**, a full-stack web application inspired by **Airbnb**.
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/JaganParida/Airbnb_Clone.git
-   cd Airbnb_Clone
+   git clone https://github.com/JaganParida/WanderLodge.git
+   cd WanderLodge
    ```
 2. Install dependencies:
    ```sh
