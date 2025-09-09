@@ -32,7 +32,7 @@ Welcome to **WanderLodge**, a full-stack web application inspired by **Airbnb**.
    ```
 4. Start the server:
    ```sh
-   npm start
+   node app.js
    ```
 5. Open your browser and visit:
    ```sh
